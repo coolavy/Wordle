@@ -6,13 +6,6 @@ import random
 from word_list import words
 from tkinter import messagebox as mb
 
-#Defining variables needed later on.
-today_word = random.choice(words)
-print(today_word)
-wrow = 6
-wcolumn = 5
-track_row = 0
-
 #Defining a few functions and coding the word part of the day.
 def next_row():
   global track_row
@@ -111,44 +104,64 @@ def check_word():
     #print("You won !!!")
 
 #---------------------------------------------------------
-#Creating the screen for Wordle.
-root = Tk()
-root.title("Wordle")
-root.geometry("550x550")
-root.resizable(0, 0)
 
-entry_dict = defaultdict(list)
+def main():
+  for row in range(wrow):
+    for col in range(wcolumn):
+      
+      entry = Entry(root, 
+                    width=4,
+                    justify='center', 
+                    font=(14), 
+                    bd=4)
+      
+      ## tracking the entry
+      entry.row=row
+      entry.col=col
+      
+      ## change entred text to caps
+      entry.bind("<KeyRelease>", caps)
+      ## when Enter is hit
+      entry.bind("<Return>", enter_pressed)
+      ## when backspace is hit
+      entry.bind("<BackSpace>", delete_pressed)
+      
+      entry_dict[row].append(entry)
+  
+      entry.grid(row=row, column=col + 1, padx=10,
+                  pady=10, ipady=5)
+      
+      ## disable rows except first one
+      if row > 0:
+        entry.config(state= "disabled")
+      ## set the focus on the first row and first column
+      if row == 0 and col == 0:
+        entry.focus_set()
+      entry.icursor(0)
+  # root.mainloop()
 
-for row in range(wrow):
-  for col in range(wcolumn):
-    
-    entry = Entry(root, 
-                  width=4,
-                  justify='center', 
-                  font=(14), 
-                  bd=4)
-    
-    ## tracking the entry
-    entry.row=row
-    entry.col=col
-    
-    ## change entred text to caps
-    entry.bind("<KeyRelease>", caps)
-    ## when Enter is hit
-    entry.bind("<Return>", enter_pressed)
-    ## when backspace is hit
-    entry.bind("<BackSpace>", delete_pressed)
-    
-    entry_dict[row].append(entry)
+#------------------------------------------------------------
+      #CODE START BELOW
+#------------------------------------------------------------
 
-    entry.grid(row=row, column=col + 1, padx=10,
-                pady=10, ipady=5)
-    
-    ## disable rows except first one
-    if row > 0:
-      entry.config(state= "disabled")
-    ## set the focus on the first row and first column
-    if row == 0 and col == 0:
-      entry.focus_set()
-    entry.icursor(0)
-# root.mainloop()
+if __name__ == "__main__":
+  # Choose a word random from list
+  today_word = random.choice(words)
+  print(today_word)
+  # variables for number of letters in word and 
+  # letters per column/row
+  wrow = 6
+  wcolumn = 5
+  track_row = 0
+
+  #Creating the screen for Wordle.
+  root = Tk()
+  root.title("Wordle")
+  root.geometry("550x550")
+  root.resizable(0, 0)
+  
+  entry_dict = defaultdict(list)
+
+  # Defining variables needed later on.
+
+  main()
