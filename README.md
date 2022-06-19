@@ -5,6 +5,7 @@ Source Code:
 Repl Link - https://replit.com/@AvyanGupta/Wordle-in-Python-Final#main.py
 GitHub    - https://github.com/coolavy/Wordle
 
+
 Rules :
       1. Letters that are in the correct places will be marked green.
       2. Letters that exist in the word but are not in the correct position will be marked yellow.
