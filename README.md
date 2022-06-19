@@ -11,7 +11,7 @@ Video.    - https://www.loom.com/share/b0c11c0e80ff4e82847062354d0185df
 
 
 
-**Rules :
+**Rules :**
 
       1. Letters that are in the correct places will be marked green.
 
