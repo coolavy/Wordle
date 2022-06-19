@@ -7,6 +7,8 @@ Repl Link - https://replit.com/@AvyanGupta/Wordle-in-Python-Final#main.py
 
 GitHub    - https://github.com/coolavy/Wordle
 
+Video.    - https://www.loom.com/share/b0c11c0e80ff4e82847062354d0185df
+
 
 Rules :
       1. Letters that are in the correct places will be marked green.
