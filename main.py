@@ -67,7 +67,9 @@ def check_word():
   entered_word = ""
   for inp in current_entries:
     entered_word += inp.get().lower()
-    
+  if entered_word not in words:
+    mb.showinfo('Invalid word', 'Not a valid word!')
+    return  
   all_correct_entries = True
   ## now check all the entered text
   for index, inp in enumerate(current_entries):
